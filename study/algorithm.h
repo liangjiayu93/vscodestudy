@@ -13,5 +13,6 @@ void quickSort(int arr[], int left, int right);
 void swapArr(int arr[], int left, int right);
 int partition(int arr[], int left, int right);
 
-void heapInsert(int arr[], int index, int date);
+void heapInsert(int arr[], int index);
 void heapify(int arr[], int index, int heapSize);
+void heapSort(int arr[], int heapSize);

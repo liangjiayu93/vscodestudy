@@ -343,14 +343,18 @@ int main()
 	//quickSort(arr, 0, len - 1);
 	//printfArry(arr, len);
 
+	
 	int arr1[30] = { 0 };
+
+	/*
 	for (int i = 0; i < len; i++)
 	{
 		heapInsert(arr1, i, arr[i]);
 	}
 	printfArry(arr1, len);
 	cout << "----------²åÈë´ó¶Ñ--------------" << len << endl;
-
+	*/
+	/*
 	for (int i= 0; i < len;)
 	{
 		cout << arr1[0] << " ";
@@ -359,7 +363,12 @@ int main()
 	}
 	cout << endl;
 	cout << "----------´òÓ¡´ó¶ÑÅÅÐò--------------" << len << endl;
+	*/
 
+	heapSort(arr, len);
+	printfArry(arr, len);
+
+	cout << "----------´òÓ¡´ó¶ÑÅÅÐò--------------" << len << endl;
 
 	delete[] arr;
 	system("pause");

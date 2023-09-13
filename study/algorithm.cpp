@@ -159,9 +159,10 @@ int partition(int arr[], int left, int right)
 }
 
 //大堆插入
-void heapInsert(int arr[], int index, int date)
+//某个数处在index位置，往上继续移动
+void heapInsert(int arr[], int index)
 {
-	arr[index] = date;
+	//arr[index] = date;
 	while (index != 0 && arr[index] > arr[(index - 1) / 2])
 	{
 		swapArr(arr, index, (index - 1) / 2);
@@ -185,5 +186,21 @@ void heapify(int arr[], int index, int heapSize)
 		swapArr(arr, index, largest);
 		index = largest;
 		left = index * 2 + 1;
+	}
+}
+
+void heapSort(int arr[], int heapSize)
+{
+	if (arr == nullptr || heapSize < 2)
+		return;
+	for (int i = 1; i < heapSize; i++)
+	{
+		heapInsert(arr,i);
+	}
+
+	while (heapSize > 0)
+	{
+		swapArr(arr, 0, --heapSize);
+		heapify(arr, 0, heapSize);
 	}
 }
