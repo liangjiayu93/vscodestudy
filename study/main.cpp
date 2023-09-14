@@ -8,6 +8,7 @@
 #include <regex>
 #include "pinyin.h"  
 #include "algorithm.h"
+#include <queue>
 
 void bubblesort(int arr[], int arrsize)
 {
@@ -370,7 +371,29 @@ int main()
 
 	cout << "----------打印大堆排序--------------" << len << endl;
 
+
+	cout << "fushu=" << -1 / 2 << endl;
+
 	delete[] arr;
+
+
+	priority_queue<int, vector<int>, greater<int>> myqueue; //优先队列，默认大堆
+
+	myqueue.push(1);
+	myqueue.push(12);
+	myqueue.push(3);
+	myqueue.push(8);
+	myqueue.push(18);
+	myqueue.push(20);
+	myqueue.push(6);
+
+	while (!myqueue.empty())
+	{
+		cout << myqueue.top() << " ";
+		myqueue.pop();
+	}
+	cout << endl;
+
 	system("pause");
 	return 0;
 }
