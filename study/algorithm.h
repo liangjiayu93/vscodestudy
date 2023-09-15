@@ -16,3 +16,7 @@ int partition(int arr[], int left, int right);
 void heapInsert(int arr[], int index);
 void heapify(int arr[], int index, int heapSize);
 void heapSort(int arr[], int heapSize);
+
+int maxbits(int arr[], int len);
+void radixSort(int arr[], int left, int right, int digit);
+int getDigit(int num, int d);

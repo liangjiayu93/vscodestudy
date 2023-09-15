@@ -345,7 +345,7 @@ int main()
 	//printfArry(arr, len);
 
 	
-	int arr1[30] = { 0 };
+	int arr1[30] = { 12,44,56,3,8,9,15,67,80,66,77,1234,5845,555,66,44,12,347,86789,1235,623467,54747,352 };
 
 	/*
 	for (int i = 0; i < len; i++)
@@ -366,17 +366,21 @@ int main()
 	cout << "----------打印大堆排序--------------" << len << endl;
 	*/
 
+	/*
 	heapSort(arr, len);
 	printfArry(arr, len);
 
 	cout << "----------打印大堆排序--------------" << len << endl;
+	*/
 
+	radixSort(arr1, 0, 30 - 1, maxbits(arr, 30));
+	printfArry(arr1, 30);
 
-	cout << "fushu=" << -1 / 2 << endl;
+	cout << "----------打印基数排序--------------" << len << endl;
 
 	delete[] arr;
 
-
+	/*
 	priority_queue<int, vector<int>, greater<int>> myqueue; //优先队列，默认大堆
 
 	myqueue.push(1);
@@ -393,7 +397,7 @@ int main()
 		myqueue.pop();
 	}
 	cout << endl;
-
+	*/
 	system("pause");
 	return 0;
 }

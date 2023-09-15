@@ -204,3 +204,78 @@ void heapSort(int arr[], int heapSize)
 		heapify(arr, 0, heapSize);
 	}
 }
+
+//找出数组最大的那个数有多少位
+int maxbits(int arr[], int len)
+{
+	int max = 0;
+	for (int i = 0; i < len; i++)
+	{
+		max = max > arr[i] ? max : arr[i];
+	}
+	int res = 0;
+	while (max != 0)
+	{
+		max = max / 10;
+		res++;
+	}
+	return res;
+}
+
+//基数排序
+//利用10个桶（队列），把个位、十位、百位的数字分别入桶，再出桶，直到最高位为止，数据就有序了
+//这里用一个count[10]的数组代替10个桶
+//arr[left......right]排序，digit表示该数组中最多有多少位，有多少位就进出桶多少次
+void radixSort(int arr[], int left, int right, int digit)
+{
+	const int radix = 10;
+	int *bucket = new int[right - left + 1]; //辅助空间，和arr一样大小
+
+	int j = 0;
+	for (int d = 1; d <= digit; d++) //有多少位就进出多少次
+	{
+
+		//count[0]表示当前位（d位）是0的数字有多少个
+		//count[1]表示当前位（d位）是（0和1）的数字有多少个
+		//count[2]表示当前位（d位）是（0、1、2）的数字有多少个
+		//count[i]表示当前位（d位）是（0到i）的数字有多少个
+		int count[radix] = { 0 };
+		for (int i = 0; i < right - left + 1; i++)  //记录当前位的个数
+		{
+			j = getDigit(arr[i], d);
+			count[j]++;
+		}
+
+		for (int i = 1; i < radix; i++) //调整count数组，使其变为累加
+		{
+			count[i] = count[i] + count[i - 1];
+		}
+
+		//从右到左把arr的数据导出到辅助空间bucket，模拟队列，先入先出原则
+		for (int i = right; i >= left; i--)
+		{
+			j = getDigit(arr[i], d);
+			bucket[count[j] - 1] = arr[i];
+			count[j]--;
+		}
+
+		for (int i = left, j = 0; i <= right; i++, j++) //bucket导回数据到arr，完成一次基数排序
+		{
+			arr[i] = bucket[j];
+		}
+	}
+}
+
+//获取当前位数的数字
+//d表示位数，1是个位，2是十位，以此类推
+int getDigit(int num, int d)
+{
+	d--;
+	int pow = 1;
+	while (d != 0)
+	{
+		pow = pow * 10;
+		d--;
+	}
+	return (num / pow) % 10;
+}
